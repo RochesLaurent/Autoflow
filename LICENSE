@@ -1,21 +1,101 @@
-MIT License
+AUTOFLOW PROPRIETARY SOFTWARE LICENSE
 
-Copyright (c) 2025 RochesLaurent
+Copyright (c) 2024 RochesWebStudio. Tous droits réservés.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+LICENCE LOGICIEL PROPRIÉTAIRE - AUTOFLOW
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. DROITS D'AUTEUR ET PROPRIÉTÉ
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Ce logiciel et tous ses composants, y compris mais sans s'y limiter, le code source, 
+la documentation, les interfaces utilisateur, les algorithmes, les structures de 
+données, et tous les éléments créatifs associés (ci-après "le Logiciel") sont la 
+propriété exclusive de RochesWebStudio et sont protégés par les lois sur le 
+droit d'auteur, les brevets, les marques commerciales et autres droits de propriété 
+intellectuelle.
+
+2. OCTROI DE LICENCE LIMITÉE
+
+Sous réserve des termes et conditions de cette licence, RochesWebStudio vous 
+accorde une licence personnelle, non-exclusive, non-transférable et révocable pour :
+
+a) Utiliser le Logiciel uniquement dans le cadre de votre emploi ou mission pour 
+   RochesWebStudio
+b) Modifier le Logiciel uniquement dans le cadre de votre travail autorisé
+c) Créer des œuvres dérivées uniquement dans le contexte du développement du produit
+
+3. RESTRICTIONS
+
+Vous N'ÊTES PAS autorisé à :
+
+a) Distribuer, publier, transmettre ou divulguer le Logiciel ou toute partie de 
+   celui-ci à des tiers non autorisés
+b) Créer des copies du Logiciel en dehors de celles nécessaires à votre travail
+c) Effectuer de la rétro-ingénierie, décompiler ou désassembler le Logiciel
+d) Retirer, altérer ou obscurcir tout avis de droit d'auteur ou de propriété
+e) Utiliser le Logiciel pour développer des produits concurrents
+f) Concéder une sous-licence, louer, prêter ou transférer vos droits
+g) Utiliser le Logiciel en dehors du cadre de votre emploi/mission pour RochesWebStudio
+
+4. OBLIGATIONS DE CONFIDENTIALITÉ
+
+Vous reconnaissez que le Logiciel contient des informations confidentielles et 
+des secrets commerciaux de RochesWebStudio. Vous vous engagez à :
+
+a) Maintenir la confidentialité absolue du Logiciel
+b) Ne pas divulguer d'informations concernant le Logiciel à des tiers
+c) Utiliser le même degré de prudence que vous utiliseriez pour protéger vos 
+   propres informations confidentielles, mais en aucun cas moins qu'un degré 
+   raisonnable de prudence
+d) Informer immédiatement RochesWebStudio de toute utilisation ou divulgation 
+   non autorisée
+
+5. CONTRIBUTIONS
+
+Toute modification, amélioration, correction de bug, ou autre contribution que vous 
+apportez au Logiciel devient automatiquement la propriété de RochesWebStudio. 
+Vous cédez par les présentes tous vos droits, titres et intérêts dans ces contributions.
+
+6. RÉSILIATION
+
+Cette licence se termine automatiquement :
+a) À la fin de votre emploi ou mission avec RochesWebStudio
+b) En cas de violation de l'un des termes de cette licence
+c) Sur notification écrite de RochesWebStudio
+
+Lors de la résiliation, vous devez cesser toute utilisation du Logiciel et 
+détruire toutes les copies en votre possession.
+
+7. GARANTIE ET RESPONSABILITÉ
+
+LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU 
+IMPLICITE. RochesWebStudio DÉCLINE TOUTE RESPONSABILITÉ POUR LES DOMMAGES 
+DIRECTS, INDIRECTS, ACCESSOIRES, SPÉCIAUX OU CONSÉCUTIFS RÉSULTANT DE 
+L'UTILISATION DU LOGICIEL.
+
+8. VIOLATIONS ET RECOURS
+
+Vous reconnaissez qu'une violation de cette licence causerait un préjudice 
+irréparable à RochesWebStudio, et que RochesWebStudio a le droit de demander 
+une injonction et d'autres recours équitables, en plus de tous autres recours 
+disponibles en droit ou en équité.
+
+9. LOI APPLICABLE
+
+Cette licence est régie par les lois françaises. Tout litige sera soumis à la 
+juridiction exclusive des tribunaux de [VILLE, FRANCE].
+
+10. ACCORD COMPLET
+
+Cette licence constitue l'accord complet entre les parties concernant le Logiciel 
+et remplace tous les accords antérieurs ou contemporains, écrits ou oraux.
+
+EN ACCÉDANT AU LOGICIEL, VOUS CONFIRMEZ AVOIR LU, COMPRIS ET ACCEPTÉ D'ÊTRE LIÉ 
+PAR LES TERMES DE CETTE LICENCE.
+
+---
+
+Pour toute question concernant cette licence, contactez :
+Email : legal@rochesweb-studio.fr
+Adresse : 654 Rue Benoit Duperrier, 38560 JARRIE
+
+Dernière mise à jour : 06/2025
