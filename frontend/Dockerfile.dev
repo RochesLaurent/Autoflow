@@ -1,28 +1,31 @@
-# Dockerfile.dev pour le frontend React
+# Dockerfile.dev pour le frontend Vue.js - Version simplifiée
 FROM node:18-alpine
 
-# Installation de dépendances système
-RUN apk add --no-cache git
+# Installation de dépendances système pour Vue.js
+RUN apk add --no-cache \
+    git \
+    python3 \
+    make \
+    g++
 
 # Création du répertoire de travail
 WORKDIR /app
 
-# Configuration utilisateur
-RUN addgroup -g 1000 appuser && adduser -u 1000 -G appuser -s /bin/sh -D appuser
-RUN chown -R appuser:appuser /app
-USER appuser
+# Copie des fichiers de configuration package
+COPY package.json package-lock.json* ./
 
-# Copie des fichiers de configuration
-COPY --chown=appuser:appuser package.json package-lock.json* ./
-
-# Installation des dépendances si les fichiers existent
-RUN if [ -f package.json ]; then npm ci; fi
+# Installation des dépendances Vue.js
+RUN if [ -f package.json ]; then npm ci --prefer-offline --no-audit; fi
 
 # Copie du code source
-COPY --chown=appuser:appuser . .
+COPY . .
 
-# Exposition du port
+# Configuration Vite pour développement
+ENV VITE_DEV_SERVER_HOST=0.0.0.0
+ENV VITE_DEV_SERVER_PORT=3000
+
+# Exposition du port Vite
 EXPOSE 3000
 
-# Commande par défaut
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+# Commande de développement avec hot-reload
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "3000"]
