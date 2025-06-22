@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  # Base de données MySQL
+  database:
+    image: mysql:8.0
+    container_name: autoflow_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: autoflow_root
+      MYSQL_DATABASE: autoflow_dev
+      MYSQL_USER: autoflow_user
+      MYSQL_PASSWORD: autoflow_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./infrastructure/mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - autoflow_network
+
+  # Cache Redis
+  redis:
+    image: redis:7-alpine
+    container_name: autoflow_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - autoflow_network
+
+  # Backend PHP/Symfony
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: autoflow_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/var/www/html
+      - /var/www/html/vendor
+    environment:
+      DATABASE_URL: mysql://autoflow_user:autoflow_pass@database:3306/autoflow_dev
+      REDIS_URL: redis://redis:6379
+      APP_ENV: dev
+      APP_DEBUG: 1
+    depends_on:
+      - database
+      - redis
+    networks:
+      - autoflow_network
+    command: ["symfony", "serve", "--host=0.0.0.0", "--port=8000", "--no-tls"]
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: autoflow_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_API_URL: http://localhost:8000
+      CHOKIDAR_USEPOLLING: true
+    networks:
+      - autoflow_network
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+  # PhpMyAdmin pour gestion BDD
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: autoflow_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: database
+      PMA_USER: autoflow_user
+      PMA_PASSWORD: autoflow_pass
+    depends_on:
+      - database
+    networks:
+      - autoflow_network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  autoflow_network:
+    driver: bridge
