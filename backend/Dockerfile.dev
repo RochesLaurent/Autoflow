@@ -1,0 +1,51 @@
+# Dockerfile.dev pour le backend Symfony
+FROM php:8.2-cli
+
+# Installation des extensions PHP nécessaires
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    libicu-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install \
+    pdo_mysql \
+    zip \
+    intl \
+    gd \
+    opcache
+
+# Installation de Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Installation de Symfony CLI
+RUN curl -sS https://get.symfony.com/cli/installer | bash && \
+    mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+
+# Création du répertoire de travail
+WORKDIR /var/www/html
+
+# Configuration utilisateur
+RUN groupadd -g 1000 appuser && useradd -u 1000 -g appuser -m appuser
+RUN chown -R appuser:appuser /var/www/html
+
+# Copie des fichiers de configuration
+COPY composer.json composer.lock* ./
+
+# Installation des dépendances si les fichiers existent
+RUN if [ -f composer.json ]; then composer install --no-scripts --no-autoloader; fi
+
+# Copie du code source
+COPY . .
+
+# Installation complète et optimisation
+RUN if [ -f composer.json ]; then composer dump-autoload --optimize; fi
+
+# Exposition du port
+EXPOSE 8000
+
+# Commande par défaut
+CMD ["symfony", "serve", "--host=0.0.0.0", "--port=8000", "--no-tls"]
