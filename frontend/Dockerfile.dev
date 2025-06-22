@@ -1,0 +1,28 @@
+# Dockerfile.dev pour le frontend React
+FROM node:18-alpine
+
+# Installation de dépendances système
+RUN apk add --no-cache git
+
+# Création du répertoire de travail
+WORKDIR /app
+
+# Configuration utilisateur
+RUN addgroup -g 1000 appuser && adduser -u 1000 -G appuser -s /bin/sh -D appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+# Copie des fichiers de configuration
+COPY --chown=appuser:appuser package.json package-lock.json* ./
+
+# Installation des dépendances si les fichiers existent
+RUN if [ -f package.json ]; then npm ci; fi
+
+# Copie du code source
+COPY --chown=appuser:appuser . .
+
+# Exposition du port
+EXPOSE 3000
+
+# Commande par défaut
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
